@@ -18,7 +18,10 @@ class GymSettingFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'key' => fake()->unique()->slug(2),
+            'value' => fake()->word(),
+            'type' => fake()->randomElement(['text', 'boolean', 'integer']),
+            'label' => fake()->words(2, true),
         ];
     }
 }

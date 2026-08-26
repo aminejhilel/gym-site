@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('member_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('gym_class_id')->constrained()->cascadeOnDelete();
+            $table->timestamp('reserved_at')->useCurrent();
+            $table->enum('status', ['reserved', 'attended', 'cancelled'])->default('reserved');
             $table->timestamps();
         });
     }

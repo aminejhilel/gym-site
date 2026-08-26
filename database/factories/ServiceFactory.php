@@ -18,7 +18,11 @@ class ServiceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->randomElement(['Personal Training', 'Nutrition Coaching', 'Sauna Access', 'Swimming Pool', 'Group Classes', 'Locker Room', 'Towel Service', 'Parking']),
+            'description' => fake()->sentence(),
+            'price' => fake()->randomFloat(2, 10, 200),
+            'icon' => null,
+            'is_active' => fake()->boolean(85),
         ];
     }
 }

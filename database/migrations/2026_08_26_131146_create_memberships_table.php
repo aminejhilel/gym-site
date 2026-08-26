@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('member_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('plan_id')->constrained('membership_plans')->cascadeOnDelete();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->enum('status', ['active', 'expired', 'cancelled'])->default('active');
+            $table->string('qr_code')->unique()->nullable();
             $table->timestamps();
         });
     }

@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('gym_classes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->foreignId('coach_id')->nullable()->constrained()->nullOnDelete();
+            $table->integer('capacity')->default(20);
+            $table->integer('duration_minutes')->default(60);
+            $table->timestamp('scheduled_at');
+            $table->enum('status', ['scheduled', 'cancelled', 'completed'])->default('scheduled');
+            $table->string('location')->nullable();
             $table->timestamps();
         });
     }

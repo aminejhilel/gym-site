@@ -1,9 +1,305 @@
-@import 'tailwindcss';
+:root {
+    --primary: #f59e0b;
+    --primary-hover: #d97706;
+    --bg-dark: #0f172a;
+    --bg-darker: #020617;
+    --text-light: #f8fafc;
+    --text-muted: #94a3b8;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+body {
+    background-color: var(--bg-darker);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.btn-login {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: var(--primary);
+    color: var(--bg-darker);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 0 5%;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 1));
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: fadeInUp 1s ease;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    background: linear-gradient(to right, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--bg-darker);
+    padding: 1rem 2.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* Section Shared */
+.section {
+    padding: 6rem 5%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    color: #fff;
+}
+
+.section-title span {
+    color: var(--primary);
+}
+
+/* Memberships */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.plan-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+.plan-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.plan-price {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+}
+
+.plan-price span {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.plan-features {
+    list-style: none;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.plan-features li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+}
+
+.plan-features li::before {
+    content: '✓';
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Classes */
+.classes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.class-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.class-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.class-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.class-coach {
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.class-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Footer */
+footer {
+    background: #000;
+    padding: 3rem 5%;
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+}
+
+footer p {
+    color: var(--text-muted);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* simple mobile approach for now */
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
 }

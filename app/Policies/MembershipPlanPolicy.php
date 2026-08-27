@@ -13,7 +13,7 @@ class MembershipPlanPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class MembershipPlanPolicy
      */
     public function view(User $user, MembershipPlan $membershipPlan): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class MembershipPlanPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class MembershipPlanPolicy
      */
     public function update(User $user, MembershipPlan $membershipPlan): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -45,7 +45,7 @@ class MembershipPlanPolicy
      */
     public function delete(User $user, MembershipPlan $membershipPlan): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class MembershipPlanPolicy
      */
     public function restore(User $user, MembershipPlan $membershipPlan): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -61,6 +61,6 @@ class MembershipPlanPolicy
      */
     public function forceDelete(User $user, MembershipPlan $membershipPlan): bool
     {
-        return false;
+        return true;
     }
 }
